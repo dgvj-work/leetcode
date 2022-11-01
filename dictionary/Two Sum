@@ -1,0 +1,13 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        
+        d = {}
+        
+        for i in range(len(nums)):
+            if nums[i] not in d:
+                d[nums[i]] = i
+            
+            k = target - nums[i]
+            
+            if k in d and d[k] != i:
+                return [d[k], i]
