@@ -1,3 +1,13 @@
+"""
+idea here is we create a dictionary or array element and index and see if the target - current element is present in the dictionary. 
+Make sure you use d[k]!=i condition as well since it can fail on the below use case. 
+
+Input: [3,2,4]
+target  = 6
+Output: [0,0]
+Expected: [1,2] 
+
+"""
 class Solution(object):
     def twoSum(self, nums, target):
         d = {}
