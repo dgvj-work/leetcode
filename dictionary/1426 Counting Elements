@@ -1,0 +1,13 @@
+"""
+For checking the existinece of a char or number in array string, Dict and set is the best DS to go with as it gives O(1) search complexity.
+You can try to convert your arr to a set and then do the search in it. 
+"""
+
+class Solution(object):
+    def countElements(self, arr):
+        nums = set(arr)
+        cnt = 0
+        for i in arr:
+            if i+1 in nums:
+                cnt+=1
+        return cnt
