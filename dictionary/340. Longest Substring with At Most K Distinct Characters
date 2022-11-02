@@ -1,0 +1,28 @@
+
+"""
+For Longest substring with X repeating characters - think always for sliding window with dictionary to maintain the count. 
+"""
+
+class Solution(object):
+    def lengthOfLongestSubstringKDistinct(self, s, k):
+        
+        d = defaultdict(int)     
+        left = ans = 0
+        if k == 0:
+            return 0
+        for right in range(len(s)):           
+            d[s[right]]+=1
+            if len(d) > k:           
+                while left < right and len(d) > k:
+                    d[s[left]]-=1
+                    if d[s[left]] == 0:
+                        del d[s[left]]
+                    left+=1
+                    
+            ans = max(ans, right -left + 1)
+        return ans
+                
+        
+            
+        
+        
