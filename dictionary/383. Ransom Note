@@ -1,0 +1,13 @@
+class Solution(object):
+    def canConstruct(self, ransomNote, magazine):
+        
+        c = collections.Counter(magazine)
+        
+        for i in ransomNote:
+            if i not in c or c[i] == 0:
+                return False 
+            else:
+                c[i] = c[i]-1
+                
+        return True
+            
