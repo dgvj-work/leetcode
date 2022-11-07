@@ -1,0 +1,19 @@
+"""
+if there is 3 consecutive 0s ie at i, i+1 and i-1 means we can plant the 1 at i. 
+also there will be an edge case that is [0,0,1,1] it has only two consecutive 0s but we still can plant 1 at the starting position.
+So we will add 0s at start and end and check for all the given values in array. For detail explanation check out neetcode solution video. 
+"""
+
+class Solution(object):
+    def canPlaceFlowers(self, flowerbed, n):
+        
+        flowerbed = [0] + flowerbed + [0]
+        
+        
+        for i in range(1, len(flowerbed)-1):
+            if flowerbed[i-1] == 0 and flowerbed[i] == 0 and flowerbed[i+1] == 0:
+                flowerbed[i] = 1
+                n-=1
+        return n <= 0
+       
+        
