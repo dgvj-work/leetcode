@@ -1,0 +1,15 @@
+"""
+just have two pointer one for s and another one for t and keep looping at the end s should be equal to the length of the arr s . 
+"""
+class Solution(object):
+    def isSubsequence(self, s, t):
+        sindex = 0
+        tindex = 0  
+    
+        while sindex < len(s) and tindex < len(t):        
+            if sindex < len(s) and s[sindex] == t[tindex]:
+                sindex+=1
+            tindex+=1
+        if sindex != len(s):
+            return False
+        return True 
