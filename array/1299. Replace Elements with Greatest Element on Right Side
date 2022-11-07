@@ -1,0 +1,13 @@
+"""
+when you start to run the for loop from front you will have complexity of o(n2) where as from back it will be o(n).
+just put first -1 at last index and keep storing the max value in each iteration and replacing it in the arr[index]
+"""
+
+class Solution(object):
+    def replaceElements(self, arr):
+        m = -1
+        for i in range(len(arr)-1, -1, -1):         
+            temp = arr[i]
+            arr[i] = m
+            m = max(temp, m)            
+        return arr
