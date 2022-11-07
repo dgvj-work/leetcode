@@ -1,0 +1,24 @@
+"""
+Same concept and logic like isomorphic string. Always follow this below logics.
+
+"""
+class Solution(object):
+    def wordPattern(self, pattern, s):
+        s = s.split()
+        d = {}
+        
+        if len(s) != len(pattern):
+            return False
+        
+        for i in range(len(pattern)):
+            if pattern[i] not in d:
+                if s[i] in d.values():
+                    return False
+                else:
+                    d[pattern[i]] = s[i]
+            
+            else:
+                if d[pattern[i]] != s[i]:
+                    return False
+            
+        return True
