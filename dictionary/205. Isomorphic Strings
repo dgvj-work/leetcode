@@ -1,0 +1,33 @@
+"""
+For isomorphic questions always follow the below approach. 
+- the below will give positive true as char in d will check for both key and values. 
+ d = {'e':'a', 'g':'d'} 
+    if 'a' in d:
+    
+- its a two step process. 
+  - check if element not in dict, then check if if it exist in values or not. 
+  - if it exist then compare and make sure the key value pair is same in dict.
+
+"""
+
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        
+        
+        if len(s) != len(t):
+            return False
+        
+        d = {}
+        
+        for i in range(len(s)):
+            if s[i] not in d:
+                if t[i] in d.values():
+                    return False
+                else:
+                    d[s[i]] = t[i]
+            
+            else:
+                if d[s[i]] != t[i]:
+                    return False
+            
+        return True
