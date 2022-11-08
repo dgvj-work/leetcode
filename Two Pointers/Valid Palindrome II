@@ -1,0 +1,63 @@
+"""
+valid palindrome II - 
+similar to valid palindrome just we need to make sure we check the count = 1 for both left and right cases thats why two while loops inside the while. 
+below one is good but slightly complicated solution. Recommend to go for string slice solution as shown in part two. 
+"""
+
+
+class Solution(object):
+    def validPalindrome(self, s):
+        
+        left = 0
+        right = len(s)-1
+        
+        while left < right:
+            
+            if s[left]!= s[right]:
+                l2,r2, l3,r3 = left+1, right, left, right-1
+                lflag, rflag = True, True
+                
+                while l2 < r2:
+                    if s[l2]!=s[r2]:
+                        lflag = False
+                        break
+                    l2+=1
+                    r2-=1
+                    
+                while l3 < r3:
+                    if s[l3]!=s[r3]:
+                        rflag = False
+                        break
+                    l3+=1
+                    r3-=1
+                    
+                if lflag or rflag:
+                    return True 
+                else:
+                    return False
+            left+=1
+            right-=1
+        
+        return True
+                
+            
+            
+"""
+###string slicing solution. 
+"""                
+class Solution:
+def validPalindrome(self, s: str) -> bool:
+        p1=0
+        p2=len(s)-1
+        while p1<=p2:
+            if s[p1]!=s[p2]:
+                string1=s[:p1]+s[p1+1:]
+                string2=s[:p2]+s[p2+1:]
+                return string1==string1[::-1] or string2==string2[::-1]
+            p1+=1
+            p2-=1
+        return True
+            
+                
+                
+        
