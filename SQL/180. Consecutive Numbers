@@ -1,0 +1,8 @@
+# important diff between this ques ie 180 and 603 is in this question it is asked which num itself ie value where as in 603 it is asked for the key. 
+#if it is asked for key than follow the other way ie 603. 
+
+select num as ConsecutiveNums from (
+select distinct num, lead(num) over(order by id ) as nextVal, lead(num,2) over(order by id ) as secNext from logs 
+    ) w
+where num = nextVal and 
+nextVal and secNext = 1
