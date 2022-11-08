@@ -6,3 +6,14 @@ select distinct num, lead(num) over(order by id ) as nextVal, lead(num,2) over(o
     ) w
 where num = nextVal and 
 nextVal and secNext = 1
+
+
+"""
+another way 
+"""
+select distinct l1.num as ConsecutiveNums from logs l1 join logs l2 on 
+l2.id = l1.id+1 join 
+logs l3 on l3.id = l1.id+2 and 
+l1.num = l2.num and 
+l2.num = l3.num and 
+l3.num = l1.num
