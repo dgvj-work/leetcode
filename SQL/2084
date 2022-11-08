@@ -1,5 +1,0 @@
-
-select order_id , customer_id , order_type from orders 
-where (customer_id , order_type) in (   
-    select customer_id , min(order_type) from orders group by customer_id
-)
