@@ -1,0 +1,16 @@
+
+select order_id , customer_id , order_type from orders 
+where (customer_id , order_type) in (   
+    select customer_id , min(order_type) from orders group by customer_id
+)
+
+
+---------
+
+
+select order_id , customer_id , order_type from (
+select *, (order_type - min(order_type) over(partition by customer_id)) as min_order from orders ) t 
+where min_order = 0
+
+
+
