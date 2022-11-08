@@ -1,0 +1,13 @@
+
+with cte as (
+  select id, student, lead(student) over(order by id) as nextVal, lag(student) over(order by id) as preVal
+  from seat 
+  )
+select id, 
+case 
+  when id%2 !=0 and nextVal is not null then nextVal
+  when id%2 = 0 and preVal is not null then preVal
+  else student 
+end 
+as student
+from cte
