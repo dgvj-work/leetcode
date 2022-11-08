@@ -1,0 +1,12 @@
+# Write your MySQL query statement below
+
+
+with cte1 as (
+
+    select first_col, row_number() over( order by first_col asc) as rn1 from data
+),
+cte2 as (
+        select second_col, row_number() over( order by second_col desc) as rn2 from data
+)
+select c1.first_col, c2.second_col from cte1 c1 join cte2 c2 on 
+c1.rn1 = c2.rn2
