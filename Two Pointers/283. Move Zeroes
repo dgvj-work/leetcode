@@ -1,0 +1,18 @@
+"""
+see neetcode video --> however the idea is keep the left and right pointer and the right pointer will be moving and 
+when you see a non zero element move the right element to left pointer and increase the left pointer. 
+"""
+
+class Solution(object):
+    def moveZeroes(self, nums):
+        
+        left = 0 
+        right = 0
+        
+        while left< len(nums) and right < len(nums):
+            if nums[right]:
+                nums[left], nums[right] = nums[right], nums[left]
+                left+=1
+            right+=1
+        return nums
+            
