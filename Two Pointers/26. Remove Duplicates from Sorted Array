@@ -1,0 +1,19 @@
+"""
+similar two pointer approach, only interesting thing is how you will increment already exisitng number. 
+"""
+
+class Solution(object):
+    def removeDuplicates(self, nums):
+        l = 0
+        r = 0
+        
+        while r < len(nums):
+            
+            if nums[l] != nums[r]:
+                nums[l+1] = nums[r]
+                l+=1
+            
+            r+=1
+        
+        return l+1
+        
