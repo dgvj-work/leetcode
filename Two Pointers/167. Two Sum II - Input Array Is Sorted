@@ -1,0 +1,21 @@
+"""
+just check if the sum is greater than target than decrease the second pointer and sum is smaller than target than increase the left pointer. 
+"""
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        
+        l = 0 
+        r = len(nums)-1
+        
+        while l<r:           
+            sums = nums[l] + nums[r]
+            if sums == target:
+                return [l+1, r+1]
+            
+            elif sums > target:
+                r-=1
+            
+            else:
+                l+=1
+        
