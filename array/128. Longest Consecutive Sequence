@@ -1,0 +1,27 @@
+"""
+Input: nums = [100,4,200,1,3,2]
+Output: 4
+just think that there are 3 sequences in the nums [1,2,3,4,   100,   200] and left of each sequence is nothing which means this is the start of sequence. 
+and from there we just need to check each of next number in a set and keep checking the count. 
+"""
+
+
+class Solution(object):
+    def longestConsecutive(self, nums):
+        
+        seen = set(nums)
+        cnt = 0
+        res = 0
+        
+        for i in nums:
+            
+            if (i-1) not in seen:
+                j = i+1
+                cnt = 1
+                while j in seen:
+                    j+=1
+                    cnt+=1
+                res = max(res, cnt)
+        
+        return res
+                    
