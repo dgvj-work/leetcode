@@ -1,0 +1,21 @@
+"""
+Same like buy and sell stock 1 part with a small logic change. 
+
+"""
+class Solution(object):
+    def maxProfit(self, prices):
+        res = 0
+        left = 0
+        right = 1
+        
+        while right < len(prices):
+            if prices[left] > prices[right]:
+                left = right 
+                right+=1
+            
+            else:
+                diff = prices[right] - prices[left]
+                res = res + diff
+                left+=1
+                right+=1
+        return res
