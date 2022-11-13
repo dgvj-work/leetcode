@@ -1,0 +1,21 @@
+"""
+More of a two pointer tricks where if left > right than left = right and right will increase by 1 as stock price should always be max. 
+"""
+
+class Solution(object):
+    def maxProfit(self, prices):
+        
+        res = 0
+        
+        left = 0
+        right = 1
+        
+        while right < len(prices):
+            if prices[left] > prices[right]:
+                left = right
+                right+=1
+            else:
+                diff = prices[right] - prices[left]
+                res = max(diff, res)
+                right+=1
+        return res
