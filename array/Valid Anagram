@@ -1,0 +1,20 @@
+"""
+valid anagram by checking the ascii value
+"""
+
+class Solution(object):
+    def isAnagram(self, s, t):
+        
+        res = [0]*26
+        
+        if len(s) != len(t):
+            return False
+        
+        for i in range(len(s)):
+            res[ ord(s[i]) - ord('a')] +=1
+            res[ ord(t[i]) - ord('a')]-=1
+        
+        for i in res:
+            if i!=0 :
+                return False
+        return True 
