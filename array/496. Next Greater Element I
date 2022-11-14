@@ -1,0 +1,27 @@
+"""
+simple concept of storing index of 1 array in dict and looping from the next index in other array after that eleemtn. 
+"""
+
+
+class Solution(object):
+    def nextGreaterElement(self, nums1, nums2):
+        
+        res = []
+        
+        d = defaultdict(int)
+        for i in range(len(nums2)):
+            d[nums2[i]] = i
+        print d
+        
+        for i in range(len(nums1)):
+            
+            l = d[nums1[i]]+1
+            
+            for j in range(l, len(nums2)):
+                
+                if  nums2[j] > nums1[i]:
+                    res.append(nums2[j])
+                    break
+            else:
+                res.append(-1)
+        return res
