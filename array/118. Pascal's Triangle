@@ -1,0 +1,28 @@
+"""
+assuming that the first and last element of the array is [0] and adding the assumed array for i + (i+1)
+"""
+
+class Solution(object):
+    def generate(self, numRows):
+        """
+        :type numRows: int
+        :rtype: List[List[int]]
+        """
+        res = [[1]]
+        
+        for i in range(numRows-1):
+            
+            temp = [0] + res[-1] + [0]
+            arr = []
+            
+            for j in range(len(res[-1])+1):
+                arr.append(temp[j] + temp[j+1])
+           
+            res.append(arr)
+        return  res
+                
+                
+                
+                
+                
+            
