@@ -1,6 +1,7 @@
 """
 simple trick is to append the elements if its not one of the 5 signs . If it is +, * pop two elements and apply the opertaor and 
-if it is -, / pop two elements and then do (secondpop - firstpop or secondpop / firstpop)
+if it is -, / pop two elements and then do (secondpop - firstpop or secondpop / firstpop). On division operator (int(float(b)/ a) is done to 
+convert first to float and a near zero value is taken by using int
 """
 
 class Solution(object):
