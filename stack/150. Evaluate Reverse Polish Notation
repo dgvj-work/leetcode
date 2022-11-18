@@ -1,0 +1,34 @@
+"""
+simple trick is to append the elements if its not one of the 5 signs . If it is +, * pop two elements and apply the opertaor and 
+if it is -, / pop two elements and then do (secondpop - firstpop or secondpop / firstpop)
+"""
+
+class Solution(object):
+    def evalRPN(self, tokens):
+        
+        
+        stack = []
+        
+        for c in tokens:
+            
+            if c == '+':
+                stack.append(stack.pop() + stack.pop())
+            
+            elif c == '*':
+                stack.append(stack.pop() * stack.pop())
+            
+            elif c == '-':
+                a,b = stack.pop(), stack.pop()
+                stack.append(b - a)
+            
+            elif c == '/':
+                a,b = stack.pop(), stack.pop()
+                stack.append(int(float(b)/ a))
+            
+            else:
+                stack.append(int(c))
+                
+        return stack[0]
+                
+                
+        
