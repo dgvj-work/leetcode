@@ -1,0 +1,15 @@
+"""
+Find maximum sum subarray of unsorted array in O(n) --- Kadane's Algorithm is the way to go for 
+"""
+
+class Solution(object):
+    def maxSubArray(self, nums):
+        
+        cursum = maxsum = nums[0]
+        
+        for num in nums[1:]:
+            
+            cursum = max(num, cursum+num)
+            maxsum = max(maxsum, cursum)
+        
+        return maxsum
