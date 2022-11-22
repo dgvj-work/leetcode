@@ -1,0 +1,31 @@
+"""
+palindrome can be find from two pointers at i=0 and r = len(n)-1 
+or from center point and go outwards. this is the approach followed here the complexity is n2.
+also why we have taken odd even here. See the example you can see the case where even can be the len of string as well for longest palindrome so 
+we need to check that ... check neetcode video. 
+
+"""
+
+
+class Solution(object):
+    def longestPalindrome(self, s):
+        
+        reslen = 0
+        res = ""     
+        
+        def palinDrome(s, l, r):
+
+                while l>=0 and r< len(s) and s[l] == s[r]:
+                    l-=1
+                    r+=1
+                return s[l+1:r] 
+            
+        for i in range(len(s)):
+        
+            l = r = i
+            odd = palinDrome(s, l, r)
+            even = palinDrome(s, l, r+1)
+            
+            res = max(res, odd, even, key = len)
+        return res
+    
