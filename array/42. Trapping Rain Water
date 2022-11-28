@@ -1,0 +1,43 @@
+
+
+"""
+key points - 
+- Find the water that each building can contain. 
+- find leftmax, rightmax and the min of two - current height of building if this is positve than it will be counted in the final result. 
+            minval = min(lmax[i], rmax[i]) - height[i]
+
+"""
+
+
+class Solution(object):
+    def trap(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        leftmax = 0
+        rightmax = 0
+        lmax = [0]
+        rmax = [0]
+        res = 0
+        
+        for i in range(1, len(height)):
+            leftmax =  max(leftmax, height[i-1])
+            lmax.append(leftmax)
+            
+        for i in range(len(height)-2, -1, -1):
+            rightmax =  max(rightmax, height[i+1])
+            rmax.insert(0, rightmax)
+        
+        for i in range(len(height)):
+            minval = min(lmax[i], rmax[i]) - height[i]
+            if minval >=0:
+                res+=minval
+        return res
+        
+        
+        
+        
+            
+        
+            
