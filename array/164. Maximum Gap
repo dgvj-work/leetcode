@@ -1,0 +1,51 @@
+"""
+divide your numbers into bucket.. save only the max and the min of each bucket. 
+the max difference will be in the numbers not in the same bucket but across the bucket. 
+ie max of first bucket to the min of second bucket. 
+
+finding Gaps- 
+avg_gap = math.ceil((maxi-mini)/(n-1))
+
+Finding the buckets - 
+bucketnumber = int(math.floor((nums[i] - mini)/avg_gap))
+
+"""
+
+import sys
+
+class Solution:
+    def maximumGap(self, nums: List[int]) -> int:
+        mini = sys.maxsize
+        maxi = -sys.maxsize
+        n = len(nums)
+        
+        if n < 2:
+            return 0
+        
+        for i in nums:
+            mini = min(mini, i)
+            maxi = max(maxi, i)
+        
+        avg_gap = math.ceil((maxi-mini)/(n-1))
+        if avg_gap == 0:
+            return 0   ## case when numbers are same. 
+        
+        miniarr = [sys.maxsize] * (n)
+        maxiarr = [-1] * (n)
+        
+        for i in range(len(nums)):
+            bucketnumber = int(math.floor((nums[i] - mini)/avg_gap))
+            miniarr[bucketnumber] =  min(miniarr[bucketnumber], nums[i])
+            maxiarr[bucketnumber] =  max(maxiarr[bucketnumber], nums[i])
+        
+    
+        res = 0
+        prev = mini
+        for i in range(len(miniarr)):
+            if maxiarr[i] == -1:
+                continue
+            res = max(res, miniarr[i] - prev)
+            prev = maxiarr[i]
+        
+        return res
+        
