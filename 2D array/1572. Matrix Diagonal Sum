@@ -1,0 +1,23 @@
+"""
+easy logic  for matrix diagonal remeber two things . 
+- One diagonal will be always [i][i] ie [0][0], [1][1], [2][2] etc. 
+- Second diagonal will be always [i][len(n) - 1 -i]
+
+if len diagonal is odd than center will be one of the cells - ie if len == 3 than center will be 3/2,3/2 ie 1,1
+
+"""
+
+
+class Solution(object):
+    def diagonalSum(self, mat):
+        """
+        :type mat: List[List[int]]
+        :rtype: int
+        """
+        l, res = len(mat), 0
+        
+        for i in range(len(mat)):
+            res+= mat[i][i] + mat[i][l-1-i]
+        if l % 2 == 1:
+            res-= mat[l/2][l/2]
+        return res
