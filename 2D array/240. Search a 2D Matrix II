@@ -1,5 +1,6 @@
 """
 Zig Zag search if the right element is greater than move to the left and if the row element is smaller move to the right. (M)
+time complexity is O(m+n)
 
 """
 
