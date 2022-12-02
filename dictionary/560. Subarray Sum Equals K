@@ -1,0 +1,26 @@
+"""
+just create a prefixsum and see if there is a difference with k exist in dictionary and increase the count by the 
+number of value of the key in dictionary.
+
+"""
+
+class Solution(object):
+    def subarraySum(self, nums, k):
+        
+        psum = 0
+        d = defaultdict(int)
+        d[0] = 1
+        cnt = 0
+        
+        
+        for i in nums:
+            psum+= i
+            
+            
+            if psum-k in d:
+                cnt+=d[psum-k]
+                        
+            d[psum]+=1
+            
+        return cnt
+            
