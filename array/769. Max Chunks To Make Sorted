@@ -1,0 +1,22 @@
+"""
+a simple logic here the max number of chunks would be equal number whever the current max == current element in sorted array 
+and this works easy for us because we have len of array from (0,n-1)
+[1,2,0,3]
+[1,2,2,3]
+[0,1,2,3]
+-----| |  --> so 2 chunks 
+"""
+
+class Solution(object):
+    def maxChunksToSorted(self, arr):
+        currmax = 0
+        chunk = 0
+        
+        
+        
+        for i in range(0,len(arr)):
+            currmax = max(currmax, arr[i])
+            
+            if currmax == i:
+                chunk+=1
+        return chunk
