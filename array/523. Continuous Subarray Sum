@@ -1,0 +1,23 @@
+"""
+you will be doing remainder index mapping for the prfix sum and if the remainder exist and the difference between the index is 
+> 1 means we have found the subarray. Check neetcode solution for the same. 
+"""
+
+class Solution(object):
+    def checkSubarraySum(self, nums, k):
+        total = 0
+        d = {0:-1} #remainder, index mapping.
+        
+        for i, n in enumerate(nums):
+            total += n
+            rem = total%k
+            
+            if rem not in d:
+                d[rem] = i
+            
+            elif rem in d and i-d[rem] > 1:
+                return True
+        return False
+                
+            
+            
