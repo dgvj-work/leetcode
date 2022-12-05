@@ -1,0 +1,32 @@
+"""
+Rotate array - 
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+
+- reverse the nums -> 7,6,5,4,3,2,1
+- reverse first k elements -> 5,6,7  
+reverse (k, len(nums) elements - 1,2,3,4
+all the above will give final answer -> 5,6,7, 1,2,3,4  --> final answer
+"""
+
+class Solution(object):
+    def rotate(self, nums, k):
+        
+        k = k % len(nums)
+        
+        def reverseFunction(nums, l, r):
+            while l<r:
+                temp = nums[l]
+                nums[l] = nums[r]
+                nums[r] = temp
+                l+=1
+                r-=1
+        
+        reverseFunction(nums, 0, len(nums)-1)
+        reverseFunction(nums, 0, k-1)
+        reverseFunction(nums, k, len(nums)-1)
+        
+        
+        
+        
+        
