@@ -2,6 +2,7 @@
 so for each closing bracket we will increase a count of 1 and each opening bracket we will decrease it by 1 and 
 we will see at any given point of time how many max closing brackets count was there. and at any given point of time we will always need 
 half of the max count of closing brakcet as the num steps to make the string correct. SO we divide it by 2
+For more detail check NC.
 
 """
 
