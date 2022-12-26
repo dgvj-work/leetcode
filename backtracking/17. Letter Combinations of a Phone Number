@@ -1,0 +1,57 @@
+"""
+
+"""
+
+
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        d = {'2':'abc', '3':'def', '4':'ghi','5':'jkl', '6':'mno', '7':'pqrs',
+            '8': 'tuv', '9':'wxyz'}
+
+        if len(digits) == 0:
+            return []
+        
+        def backtrack(index, curr):
+
+            if index == len(digits):
+                ans.append(curr)
+                return 
+            
+            digitN = d[digits[index]]
+
+            for digit in digitN:
+                print('inside for', digitN, digit, ans)
+                backtrack(index+1, curr+digit)
+        ans = []
+        backtrack(0, '')
+        return ans
+        
+        
+"""
+execution for digit = 23
+inside for abc a []
+inside for def d []
+inside for def e ['ad']
+inside for def f ['ad', 'ae']
+inside for abc b ['ad', 'ae', 'af']
+inside for def d ['ad', 'ae', 'af']
+inside for def e ['ad', 'ae', 'af', 'bd']
+inside for def f ['ad', 'ae', 'af', 'bd', 'be']
+inside for abc c ['ad', 'ae', 'af', 'bd', 'be', 'bf']
+inside for def d ['ad', 'ae', 'af', 'bd', 'be', 'bf']
+inside for def e ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd']
+inside for def f ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce']
+
+ Recursion Tree ---->             2
+                                / \    \
+                               /  \       \
+                              /    \        \
+                          a         b        c
+                          
+                         /|\       /|\        / | \ 
+                        / | \      / | \      / |  \
+                       ad ae af   bd  be bf   cd ce cf
+                       
+
+"""
+
