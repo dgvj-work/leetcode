@@ -1,0 +1,19 @@
+"""
+
+"""
+
+class Solution:
+    def maxLength(self, arr: List[str]) -> int:
+
+        def backtrack(index, curr):
+            nonlocal ans
+            ans = max(ans, len(curr))
+
+            for i in range(index, len(arr)):
+                res = curr+arr[i]
+                if len(res) == len(set(res)):
+                    backtrack(index+1, res)
+        
+        ans = 0        
+        backtrack(0, '')
+        return ans
