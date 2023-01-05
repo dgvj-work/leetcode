@@ -1,3 +1,23 @@
+"""
+check the lead code best solun using lead and lag for better understanding 
+
+"""
+
+#######
+select seat_id from (   
+select seat_id, free, 
+lead(free) over(order by seat_id) as lead_free, 
+lag(free) over(order by seat_id) as lag_free
+from cinema
+) t
+where (lead_free = 1 and free = 1) 
+or 
+(lag_free = 1 and free = 1) 
+order by seat_id
+
+
+
+#######
 select seat_id, free, diff from (
 select seat_id, free, row_number() over(order by seat_id) - row_number() over(partition by free order by seat_id) as diff
 from cinema) a 
