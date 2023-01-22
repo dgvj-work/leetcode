@@ -1,0 +1,39 @@
+"""
+Very important concept to learn from this and for the below two question only one difference in sign you need to put thats it. But vimportant concpet
+"""
+
+def nextSmaller(arr):
+    
+    ans = [-1] * len(arr)
+    stack = []
+    
+    for i in range(len(arr)):
+        
+        while len(stack) > 0 and arr[stack[-1]] > arr[i]:
+            ans[stack[-1]] = arr[i]
+            stack.pop()
+        
+        stack.append(i)
+    return ans
+
+print(nextSmaller([4, 8, 5, 2, 25]))
+print(nextSmaller([11, 13, 21, 3]))
+
+-------
+def nextGreater(arr):
+    
+    ans = [-1] * len(arr)
+    stack = []
+    
+    for i in range(len(arr)):
+        
+        while len(stack) > 0 and arr[stack[-1]] < arr[i]:
+            ans[stack[-1]] = arr[i]
+            stack.pop()
+        
+        stack.append(i)
+    return ans
+
+print(nextGreater([4, 8, 5, 2, 25]))
+print(nextGreater([11, 13, 21, 3]))
+    
