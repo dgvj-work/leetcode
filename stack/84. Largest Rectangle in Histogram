@@ -1,0 +1,48 @@
+""""
+"It is easy but with catch - ie when you are finding small right , set default of ans array to len(heights) where as small left set ans to default -1 and once both are calculated just loop over it and find the area ie(area = (ans1[i] - ans[i]-1)* heights[i])
+See Anuj Bhaiya video great example. "
+"""
+
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        stack = [] 
+        stack1 = [] 
+
+        ans = [-1]* len(heights) 
+        ans1 = [len(heights)] * len(heights) # taken default value of len to make calculations easy.See anuj video
+
+        for i in range(len(heights)):
+            if len(stack) > 0:
+                while stack and heights[stack[-1]] >= heights[i] :
+                    stack.pop()              
+                if stack:
+                    ans[i] = stack[-1]
+                stack.append(i)          
+            else:
+                stack.append(i)
+
+        for i in range(len(heights)-1, -1, -1):
+            if len(stack1) > 0:
+                while stack1 and heights[stack1[-1]] >= heights[i] :
+                    stack1.pop()              
+                if stack1:
+                    ans1[i] = stack1[-1]
+                stack1.append(i)          
+            else:
+                stack1.append(i)
+        
+        res = 0
+        for i in range(len(ans)):
+            area = (ans1[i] - ans[i]-1)* heights[i]
+            res = max(res, area)
+        
+        return res
+
+
+        
+
+            
+         
+
+
+           
