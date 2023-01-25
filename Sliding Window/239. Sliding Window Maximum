@@ -1,0 +1,27 @@
+"""
+Perfect question for deque. Watch ANuj bhaiya for deque for explanation or neetcode as well. Simple logic is maitain a deque when a bigger 
+element comes we will keep it at start and all the new elements if they are coming we will pop from right if they are smaller. Code is simple and look 
+"""
+
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+
+        dq = deque([])
+        l = 0
+        ans = []
+
+        for r in range(len(nums)):
+
+            while dq and dq[-1] < nums[r]:
+                dq.pop()
+            
+            dq.append(nums[r])
+
+            if r-l+1 == k:
+                ans.append(dq[0])
+
+                if nums[l] == dq[0]:
+                    dq.popleft()
+                l+=1
+
+        return ans
