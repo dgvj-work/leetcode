@@ -1,0 +1,27 @@
+""""
+Check out Stack and Queue Manish implementation lab -- Easy concept , put -1 in stack for easy calculation, 
+for every open put the index in stack and for every close pop from stack and take the diff between last stack element and current index. 
+"""
+
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+
+        stack = [-1]
+        res = 0
+        
+        for i in range(len(s)):
+
+            if s[i] == '(':
+                stack.append(i)
+            
+            else:
+                
+                stack.pop()
+                if len(stack)==0:
+                    stack.append(i)
+                else:
+                    #print(res, s[i], i, stack[-1], stack)
+                    res = max(res, i - stack[-1])
+                               
+        
+        return res
